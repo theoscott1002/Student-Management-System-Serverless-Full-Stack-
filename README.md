@@ -248,7 +248,7 @@ Step 7: Get Your API URL
 
 After creation, you’ll see something like:
 
-https://abc123.execute-api.us-east-1.amazonaws.com
+(https://htjhdxy1f2.execute-api.us-east-1.amazonaws.com/dev)
 
 Your full endpoint becomes:
 
