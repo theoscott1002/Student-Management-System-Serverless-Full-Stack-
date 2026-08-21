@@ -24,25 +24,20 @@ It supports full CRUD operations:
 Create → Read → Update → Delete students
 
 🏗️ 2. Architecture
-
+```
 User (Browser)
-
      ↓
-CloudFront (CDN
-
+CloudFront (CDN)
      ↓
 S3 (React Build)
-
      ↓
 API Gateway
-
      ↓
 Lambda Functions
-
      ↓
 DynamoDB
 
-
+```
 
 ⚙️ 3. Backend Setup (AWS)
 
@@ -141,7 +136,7 @@ Attach it
 Step 4: Write Code to Insert a Student
 
 Go back to your Lambda code and replace it with:
-
+```
 import json
 
 import boto3
@@ -173,7 +168,7 @@ def lambda_handler(event, context):
             "student": student
         })
     }
-
+```
 Click Deploy.
 
 
@@ -284,7 +279,7 @@ AmazonDynamoDBFullAccess
 Step 3: Add Code
 
 Replace code with:
-
+```
 import json
 
 import boto3
@@ -301,7 +296,7 @@ def lambda_handler(event, context):
         "statusCode": 200,
         "body": json.dumps(response['Items'])
     }
-
+```
 Click Deploy
 
 Step 5: Connect to API Gateway
@@ -331,7 +326,7 @@ Name: getStudentById
 Runtime: Python
 
 Step2: Add Code
-
+```
 import json
 
 import boto3
@@ -360,6 +355,7 @@ def lambda_handler(event, context):
             "statusCode": 404,
             "body": json.dumps({"message": "Student not found"})
         }
+```
 👉 Click Deploy
 
 Step 3: Add Route in API Gateway
@@ -391,7 +387,7 @@ Step 1: Create Lambda
 Name: updateStudent
 
 Runtime: Python
-
+```
 import json
 
 import boto3
@@ -430,6 +426,7 @@ def lambda_handler(event, context):
         "statusCode": 200,
         "body": json.dumps(response['Attributes'])
     }
+```
 Deploy
 
 Step 3: API Gateway
@@ -445,7 +442,7 @@ Attach → updateStudent
 <------------steps:DELETE /students/{id}---------->
 
 Name: deleteStudent
-
+```
 import json
 
 import boto3
@@ -466,7 +463,7 @@ def lambda_handler(event, context):
         "statusCode": 200,
         "body": json.dumps({"message": "Student deleted"})
     }
-
+```
 Deploy
 
 Step 3: API Gateway
@@ -490,14 +487,14 @@ URL:
 https://your-api-id.execute-api.region.amazonaws.com/students
 
 Body (JSON):
-
+```
 {
   "name": "Jane Doe",
   "department": "Computer Science",
   "level": "300",
   "email": "jane@example.com"
 }
-
+```
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/b7e53514-50bc-40c7-b62c-9890b3a7db02" />
 
 🎨 4. Frontend Setup (React)
@@ -513,7 +510,7 @@ Edit student
 Delete student
 
 ######--------4.2 Project Structure--------#########
-
+```
 src/
 
  ├── components/
@@ -527,7 +524,7 @@ src/
  ├── App.css
  
  ├── index.js
- 
+ ```
 #######-------4.3 API Integration-----------######
 
 Example:
@@ -598,7 +595,7 @@ Upload everything inside /build folder (not the folder itself)
 Go to Permissions → Bucket policy
 
 Paste this (replace bucket name):
-
+```
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -611,7 +608,7 @@ Paste this (replace bucket name):
     }
   ]
 }
-
+```
 👉 Save
 
 🧪 Test S3 URL
